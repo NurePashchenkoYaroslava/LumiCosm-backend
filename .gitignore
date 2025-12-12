@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.idea/
+.vscode/
+
+# Database/Config
+*.db
+*.sqlite
+.env
