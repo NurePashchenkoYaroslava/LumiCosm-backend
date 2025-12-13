@@ -2,7 +2,6 @@ from pydantic import BaseModel, ConfigDict
 from typing import Optional, List
 from datetime import date, datetime
 
-# --- 1. БАЗОВІ СХЕМИ ---
 class StoreCreate(BaseModel):
     name: str
     address: str
@@ -18,17 +17,16 @@ class ProductCreate(BaseModel):
     category: str
     description: str
 
-class ProductResponse(ProductCreate):   # <--- Перевірте наявність цього класу
+class ProductResponse(ProductCreate):   
     ProductID: int
     model_config = ConfigDict(from_attributes=True)
 
-# --- 2. СХЕМИ ДЛЯ ЮЗЕРІВ (AUTH) ---
 class UserCreate(BaseModel):
     email: str
     password: str
-    FullName: str          # Виправлено з full_name, щоб збігалося з models.py
+    FullName: str          
     role: str = "client"
-    StoreID: Optional[int] = None # Виправлено з store_id
+    StoreID: Optional[int] = None 
 
 class UserResponse(BaseModel):
     UserID: int
@@ -43,7 +41,6 @@ class LoginRequest(BaseModel):
     email: str
     password: str
 
-# --- 3. СХЕМИ ДЛЯ МЕНЕДЖЕРА (ПАРТІЇ) ---
 class BatchCreate(BaseModel):
     ProductID: int
     Quantity: int
@@ -59,7 +56,6 @@ class BatchResponse(BatchCreate):
     
     model_config = ConfigDict(from_attributes=True)
 
-# --- 4. СХЕМИ ДЛЯ КЛІЄНТА (СКАНУВАННЯ) ---
 class ScanResponse(BaseModel):
     product_name: str
     brand: str
@@ -70,7 +66,6 @@ class ScanResponse(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
-# --- 5. СХЕМИ ДЛЯ СКАРГ (COMPLAINTS) ---
 class ComplaintCreate(BaseModel):
     BatchID: int
     message: str
@@ -82,7 +77,6 @@ class ComplaintResponse(BaseModel):
     CreatedDate: date
     model_config = ConfigDict(from_attributes=True)
 
-# --- 6. СХЕМИ ДЛЯ РЕДАГУВАННЯ (UPDATE - PUT) ---
 class ProductUpdate(BaseModel):
     name: Optional[str] = None
     brand: Optional[str] = None

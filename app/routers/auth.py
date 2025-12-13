@@ -4,7 +4,7 @@ from .. import models, schemas, database, crud
 
 router = APIRouter(prefix="/auth", tags=["Auth & Registration"])
 
-@router.post("/register", response_model=schemas.UserResponse)
+@router.post("/register", response_model=schemas.UserResponse) 
 def register_user(user: schemas.UserCreate, db: Session = Depends(database.get_db)):
     db_user = crud.get_user_by_email(db, email=user.email)
     if db_user:
