@@ -8,7 +8,7 @@ import ssd1306
 CONFIG = {
     "SSID": "Wokwi-GUEST",
     "PASSWORD": "",
-    "SERVER_URL": "https://long-tables-arrive.loca.lt", 
+    "SERVER_URL": "https://late-baboons-hide.loca.lt", 
     "DEVICE_ID": 4,
     "SCAN_DELAY": 5 
 }

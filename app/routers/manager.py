@@ -30,6 +30,7 @@ def get_complaints(store_id: int, db: Session = Depends(database.get_db)):
             "ComplaintID": c.ComplaintID,
             "message": c.message,
             "status": c.status,
+            "CreatedDate": c.CreatedDate,
             "product_name": c.batch.product.name, 
             "user_email": c.user.email
         })
