@@ -16,7 +16,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://postgres:1236Fuck_@db:5432/cosmetics_db
+      - DATABASE_URL=postgresql://lumicosm_db_user:Ws4V7a8UMq4wDFTZhPagvGD18fimkg6Q@dpg-d4vui8ali9vc73e0hmj0-a/lumicosm_db
     depends_on:
       - db
 
