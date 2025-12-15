@@ -1,17 +1,17 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-# Твій URL з паролем (PostgreSQL)
-DATABASE_URL = "postgresql://postgres:1236Fuck_@localhost:5432/cosmetics_db"
+
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:1236Fuck_@localhost:5432/cosmetics_db")
+
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 engine = create_engine(DATABASE_URL)
-
-# Налаштування сесії
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 Base = declarative_base()
 
-# Функція для отримання доступу до БД (Dependency Injection)
 def get_db():
     db = SessionLocal()
     try:
